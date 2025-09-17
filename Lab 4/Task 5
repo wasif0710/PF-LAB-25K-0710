@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main() {
+    float totalCost = 17;
+    char extraCheese;
+    
+    printf("Do you want extra cheese? (Y/N): ");
+    scanf(" %c", &extraCheese);
+    
+    if (extraCheese == 'Y') {
+        totalCost += 1.50;
+    }
+    
+    printf("New total cost: $%f\n", totalCost);
+
+    return 0;
+}
