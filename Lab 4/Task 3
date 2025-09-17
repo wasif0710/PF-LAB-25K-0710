@@ -1,0 +1,22 @@
+int main() {
+    int quantity;
+    int total = 0;
+
+    printf("How many small pizzas would you like? (1, 2, or 3): ");
+    scanf("%d", &quantity);
+
+    if (quantity == 1) {
+        total = 8;
+    } else if (quantity == 2) {
+        total = 15;
+    } else if (quantity == 3) {
+        total = 21;
+    } else {
+        printf("Invalid quantity.\n");
+        return 1; 
+    }
+
+    printf("You ordered %d pizza(s). Your total is $%d.\n", quantity, total);
+
+    return 0;
+}
