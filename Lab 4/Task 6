@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main() {
+    float totalCost = 18.5;  
+    int time;
+    float discountedCost;
+    
+    printf("Enter the current hour (0-23): ");
+    scanf("%d", &time);
+    
+    if (time >= 11 && time <= 14) {
+        discountedCost = totalCost * 0.90; 
+        printf("Discount applied!\n");
+    } else {
+        discountedCost = totalCost;
+    }
+    
+     printf("Final total cost: $%.2f\n", discountedCost);
+
+    return 0;
+}
