@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    float totalCost = 18.5;  
+    char student_ID;
+    
+    printf("Do you have a student ID? (Y/N): ");
+    scanf(" %c", &student_ID); 
+    
+    if (student_ID == 'Y') {
+        totalCost -= 2.00;
+        printf("Student discount applied!\n");
+    }
+    
+     printf("Final total cost: $%.2f\n", totalCost);
+
+    return 0;
+}
