@@ -1,1 +1,22 @@
+#include <stdio.h>
 
+int main() {
+    int numberOfPizzas;
+    int crustType;
+
+    printf("How many pizzas are you ordering? ");
+    scanf("%d", &numberOfPizzas);
+
+    printf("Choose a crust type:\n");
+    printf("1. Regular crust\n");
+    printf("2. Thin crust\n");
+    printf("3. Stuffed crust\n");
+    printf("Enter the number for your crust choice: ");
+    scanf("%d", &crustType);
+
+    if (numberOfPizzas == 3 && crustType == 3) {
+        printf("You get free garlic bread\n");
+    }
+
+    return 0;
+}
