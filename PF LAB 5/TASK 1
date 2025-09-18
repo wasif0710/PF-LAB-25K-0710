@@ -1,0 +1,63 @@
+#include<stdio.h>
+
+int main(){
+	int depart,spec;
+	
+	
+	printf("Enter yor Department\n");
+	printf("1: ENGINEERING\n");
+	printf("2: MEDICAL");
+	scanf("%d",&depart);
+	
+	switch(depart){
+	   	case 1:
+	   		printf("You chose Engineering\n");
+	   	  	printf("1: Computer science\n");
+	        printf("2: Mechanical");
+        	scanf("%d",&spec);
+        	
+        	switch(spec){
+        		case 1: 
+        		 printf("Subject OOP");
+        		 break;
+        		 
+        		 case 2: 
+        		 printf("Subject Analysis Machine");
+        		 break;
+        		 default : printf("Invalid Input");
+			} 
+	   	
+	   	  	
+	   	  	
+	   	case 2:
+	   	    printf("You chose Medical\n");
+	   	    printf("1: MBBS");
+	   	    printf("BDS");
+	   	    scanf("%d",&spec);
+	   	    
+	   	    switch(spec){
+	   	    	case 1: 
+        		  printf("Anatomy");
+        		  break;
+        		 
+        		 
+        		case 2: 
+        		  printf("Oral Surgery");
+        		  break;
+        		  default :printf("Invalid Input");
+			   }
+	   	        
+        		 
+        		 
+	   	  	
+	   	  	break;
+	   	default: printf("Invalid Input");
+	   	  	
+	   	  	
+	   }
+	return 0;
+	
+	
+	
+	
+}
