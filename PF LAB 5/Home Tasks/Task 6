@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int main(){
+
+char room, action;
+
+printf("Enter Room('L' for Living Room, 'K' for kitchen)");
+scanf(" %c", &room);
+
+printf("Enter action('L' for Lights, 'T' for Thermostat)");
+scanf(" %c", &action);
+
+
+if(room=='L' || room=='l'){
+	if(action=='L' || action=='l'){
+		printf("Adjusting ambient lighting\n");}
+	
+	else if(action=='T' || action=='t'){
+		printf("setting living room temperature\n");
+	}
+	else{
+		printf("Invalid Action\n");
+	} 
+}else if(room=='K' || room=='k'){
+		if(action=='L' || action=='l'){
+			printf("Turning on bright task lighting\n");
+}   	else if(action=='T' || action=='t'){
+			printf("Setting kitchen temperature\n");}
+		
+		else{
+			printf("Invalid Action\n");
+		}
+
+}
+else{
+	printf("Invalid Room\n");
+}
+return 0;
+}
