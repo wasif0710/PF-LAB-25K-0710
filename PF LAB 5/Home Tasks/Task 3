@@ -11,7 +11,7 @@ int main(){
 	printf("Enter number 2\n");
 	scanf ("%d",&b);
 	
-	printf("Enter number 3");
+	printf("Enter number 3\n");
 	scanf("%d",&c);
 	
 	discriminant= (b*b)-(4*a*c);
