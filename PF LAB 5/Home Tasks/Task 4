@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+	char username[50] = "wasif rasool";
+	char password[50] = "wasif1105";
+	char inp_username[50];
+	char inp_password[50];
+	
+	printf("Enter Username\n");
+	fgets(inp_username, sizeof(inp_username), stdin);
+	inp_username[strcspn(inp_username, "\n")] = '\0';
+	
+
+	
+	if(strcmp(inp_username, username)==0){
+		printf("Correct username\n");
+		
+		printf("Enter Password\n");
+		fgets(inp_password, sizeof(inp_password), stdin);
+		inp_password[strcspn(inp_password, "\n")] = '\0';
+	
+		if(strcmp(inp_password, password)==0){
+			printf("Logged IN\n");}
+		else {
+			printf("incorrect Password\n");
+		}
+	}
+	else {
+	
+		printf("username not found!\n");}
+		
+return 0;	
+}
+		
+	
+	
+	
