@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main(){
+	
+	int a, b, c;
+	float discriminant;
+	
+	printf("Enter number 1\n");
+	scanf("%d",&a);
+	
+	printf("Enter number 2\n");
+	scanf ("%d",&b);
+	
+	printf("Enter number 3");
+	scanf("%d",&c);
+	
+	discriminant= (b*b)-(4*a*c);
+	
+	if (discriminant>0){
+		printf("Two Real Roots");
+	}
+	else if (discriminant==0){
+	printf("One Real Root");
+	}
+	else {
+	printf("Roots are imaginary");
+	}	
+	
+	return 0;
+	
+	
+}
