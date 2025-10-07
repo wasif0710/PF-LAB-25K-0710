@@ -1,0 +1,17 @@
+#include<stdio.h>
+int main(){
+	int num , count = 1, even = 0 ,odd = 0;
+	while(count<=10){
+		printf("Enter integer : ");
+		scanf("%d",&num);
+	if(num%2==0){
+		even++;
+	}else{
+		odd++;
+	}
+	count++;
+	}
+	printf("\n The total EVEN number is %d",even);
+	printf("\n The total ODD number is %d",odd);
+	return 0;
+	}
