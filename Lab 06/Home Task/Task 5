@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <string.h>
+
+#define DAYS 7
+
+int main() {
+    int readingTime[DAYS];
+    const char *dayNames[DAYS] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+    int totalMinutes = 0;
+    int maxTime = 0, minTime = 10000;
+    int maxDay = 0, minDay = 0;
+    int daysMetGoal = 0;
+    int daysOver45 = 0;
+
+    printf("Enter your reading time for each day (in minutes):\n");
+    for (int i = 0; i < DAYS; i++) {
+        printf("%s: ", dayNames[i]);
+        scanf("%d", &readingTime[i]);
+
+        totalMinutes += readingTime[i];
+
+        if (readingTime[i] > maxTime) {
+            maxTime = readingTime[i];
+            maxDay = i;
+        }
+
+        if (readingTime[i] < minTime) {
+            minTime = readingTime[i];
+            minDay = i;
+        }
+
+        if (readingTime[i] >= 20)
+            daysMetGoal++;
+
+        if (readingTime[i] > 45)
+            daysOver45++;
+    }
+
+    int hours = totalMinutes / 60;
+    int minutes = totalMinutes % 60;
+    float average = (float)totalMinutes / DAYS;
+    float consistency = (daysMetGoal / (float)DAYS) * 100;
+
+    
+    printf("\n--- Weekly Reading Summary ---\n");
+    printf("Total Reading Time: %d hours and %d minutes\n", hours, minutes);
+    printf("Average Daily Reading Time: %.2f minutes\n", average);
+    printf("Longest Reading Session: %d minutes on %s\n", maxTime, dayNames[maxDay]);
+    printf("Shortest Reading Session: %d minutes on %s\n", minTime, dayNames[minDay]);
+    printf("Days Met 20-Minute Goal: %d\n", daysMetGoal);
+    printf("Days Read More Than 45 Minutes: %d\n", daysOver45);
+    printf("Reading Consistency: %.2f%%\n", consistency);
+
+    
+    printf("\n--- Feedback ---\n");
+    if (consistency == 100) {
+        printf("Excellent! You read every day. Keep it up!\n");
+    } else if (consistency >= 70) {
+        printf("Great job! You're building a strong habit.\n");
+    } else if (consistency >= 40) {
+        printf("You're making progress. Try to be more consistent!\n");
+    } else {
+        printf("Don't give up! A little reading each day can make a big difference.\n");
+    }
+
+    return 0;
+}
