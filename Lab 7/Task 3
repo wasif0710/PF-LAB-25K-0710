@@ -1,0 +1,68 @@
+#include <stdio.h>
+
+int main() {
+    int pass[10], fail[10];
+    int i, mark;
+    int passCount = 0, failCount = 0;
+    int passSum = 0, failSum = 0;
+
+    printf("Enter quiz marks for up to 10 students (enter -1 to stop):\n");
+
+    for (i = 0; i < 10; i++) {
+        printf("Student %d: ", i + 1);
+        scanf("%d", &mark);
+
+        if (mark == -1) {
+            break;
+        }
+
+        
+        pass[i] = -1;
+        fail[i] = -1;
+
+        if (mark >= 5 && mark <= 10) {
+            pass[i] = mark;
+            passSum += mark;
+            passCount++;
+        } else if (mark >= 0 && mark < 5) {
+            fail[i] = mark;
+            failSum += mark;
+            failCount++;
+        } else {
+            printf("Invalid mark! Please enter marks between 0-10 or -1 to exit.\n");
+            i--; 
+        }
+    }
+
+    
+    printf("\nPass marks (5-10): ");
+    for (i = 0; i < 10; i++) {
+        if (pass[i] != -1) {
+            printf("%d ", pass[i]);
+        }
+    }
+
+    if (passCount > 0) {
+        printf("\nAverage pass marks: %.2f", (float)passSum / passCount);
+    } else {
+        printf("\nNo passing marks entered.");
+    }
+
+    
+    printf("\n\nFail marks (0-4): ");
+    for (i = 0; i < 10; i++) {
+        if (fail[i] != -1) {
+            printf("%d ", fail[i]);
+        }
+    }
+
+    if (failCount > 0) {
+        printf("\nAverage fail marks: %.2f", (float)failSum / failCount);
+    } else {
+        printf("\nNo failing marks entered.");
+    }
+
+    printf("\n");
+
+    return 0;
+ }
