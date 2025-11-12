@@ -1,0 +1,29 @@
+#include<stdio.h>
+int checktemperature(float temp){
+	if(temp>35)
+	return 1;
+	if(temp<10)
+	return 2;
+	if(temp>15 && temp<25)
+	return 3;
+	else 
+	return 4;
+	return checktemperature(float temp);
+}
+int main(){
+	int code;
+	float temperature;
+	printf("Enter room current temperature in celsius : ");
+	scanf("%f",&temperature);
+	code = checktemperature(temperature);
+	if(code==1)
+	printf("Heart Alert\n");
+	else if(code==2)
+	printf("Cold Alert\n");
+	else if(code==3)
+	printf("Comfort Zone\n");
+	else
+	printf("Normal Conditions\n");
+	
+	return 0;
+}
