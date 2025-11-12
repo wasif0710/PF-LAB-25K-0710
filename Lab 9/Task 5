@@ -1,0 +1,24 @@
+#include<stdio.h>
+float billcalculation(float cost , int people){
+	float tip, tax, servicecharge, total;
+	tax = cost * 0.08;
+	if (cost > 50)
+	tip = cost * 0.15;
+	else 
+	tip = cost * 0.10;
+	if(people > 6)
+	servicecharge = cost * 0.05;
+	total = tip + tax + servicecharge + cost;
+	return total;
+}
+int main(){
+	int totalpeople;
+	float foodcost;
+	printf("Enter food cost: \n");
+	scanf("%f",&foodcost);
+	printf("Enter number of people : \n");
+	scanf("%d",&totalpeople);
+	float totalbill = billcalculation(foodcost,totalpeople);
+	printf("The total bill is %f :\n",totalbill);
+	return 0;
+}
