@@ -1,0 +1,22 @@
+#include<stdio.h>
+int main(){
+	int grid[3][4] = {1,2,3,4,5,6,7,8,9,10,11,12};
+	int *p = &grid[0][0];
+	printf("Access first element using p: %d\n",*p);
+	printf("Access 6th element using p+5: %d\n",*(p+5));	
+	int *q = &grid[1][0];
+	printf("Second row, 3rd element (q[2]) : %d\n",q[2]);
+	printf("Element before second row (q[-1]) %d\n",q[-1]);
+	int *r = &grid[0][0];
+	printf("Numbers divisible by 3 :");
+	int i,j;
+	for(i=0;i<12;i++){
+	if(*(r+i) % 3 ==0){
+	printf("%d ", *(r+i));
+	}
+}
+	printf("\n");
+	int *last = &grid[0][0] + 11;
+	printf("Last element of grid : %d\n", *last);
+	return 0;
+}
