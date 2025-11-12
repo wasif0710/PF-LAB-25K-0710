@@ -1,0 +1,27 @@
+#include<stdio.h>
+int shippingcalculation(float amount , float w){
+	float shippingcost;
+	if(amount>100){
+	shippingcost = 0;
+}
+ else {
+ 	if(w < 2)
+ 	shippingcost = 10;
+ 	if(w >= 2 && w <= 5)
+ 	shippingcost = 15;
+ 	else
+ 	shippingcost = 20;
+ }
+ return amount + shippingcost;
+}
+int main(){
+	float orderamount;
+	float packageweight;
+	printf("Enter the order amount : \n");
+	scanf("%f",&orderamount);
+	printf("Enter the package weight : \n");
+	scanf("%f",&packageweight);
+	float totalcost = shippingcalculation(orderamount,packageweight);
+	printf("The total cost is %f : \n",totalcost);
+	return 0;
+}
