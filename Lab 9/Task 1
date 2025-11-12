@@ -1,0 +1,19 @@
+#include<stdio.h>
+int processtransection(int transectionlimit, int amount){
+	if(amount<transectionlimit){
+	transectionlimit -= amount;
+	printf("APPROVED\n");
+} else{
+	printf("DECLINED\n");
+}
+return transectionlimit;
+}
+int main(){
+	int transectionlimit = 5000;
+	int transectionamount;
+	printf("Enter the amount of transaction : ");
+	scanf("%d",&transectionamount);
+	int remaininglimit = processtransection(transectionlimit,transectionamount);
+	printf("The Remaining limit is : %d",remaininglimit);
+	return 0;
+}
