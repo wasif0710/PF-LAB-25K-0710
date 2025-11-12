@@ -1,1 +1,24 @@
-
+#include<stdio.h>
+float calculatecost(int days, float km){
+	float baserate = 40;
+	float extrarate = 0.25;
+	float totalcost;
+	totalcost = days * baserate;
+	float kmallowed = days * 100;
+	if(km > kmallowed) 
+	totalcost += (km - kmallowed) * extrarate;
+	if(days>7)
+	totalcost = totalcost * 0.90;
+	return totalcost;
+}
+int main(){
+	float kilometers;
+	int rentaldays;
+	printf("Enter the number of days to renting a car :\n");
+	scanf("%d",&rentaldays);
+	printf("Enter the kilometers driven :\n");
+	scanf("%f",&kilometers);
+	float rentalcost = calculatecost(rentaldays,kilometers);
+	printf("The total rental cost is %f :\n",rentalcost);
+	return 0;
+}
