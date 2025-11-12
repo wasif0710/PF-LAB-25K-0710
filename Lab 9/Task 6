@@ -1,0 +1,22 @@
+#include<stdio.h>
+void calculatetax(float grossincome, float *tax, float *netincome){
+   if(grossincome<=20000){
+   	*tax = 0;
+   }
+   else if(grossincome<= 50000){
+   	*tax = (grossincome-20000) * 0.10;
+   }
+   else{
+   	*tax = (grossincome - 20000) + ((grossincome - 50000) * 0.20);
+   }
+   *netincome = grossincome - *tax;
+}
+int main(){
+ float grossincome , tax , netincome;
+ printf("Enter the Gross income :\n");
+ scanf("%f",&grossincome);
+ calculatetax(grossincome, &tax, &netincome);
+ printf("Tax amount is %f\n",tax);
+  printf("Net income %f\n",netincome);	
+	return 0;
+}
