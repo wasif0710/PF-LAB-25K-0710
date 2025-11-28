@@ -14,7 +14,7 @@ typedef struct {
     char grade[3];
 } Student;
 
-/* Read full line safely */
+
 void read_line(char *buf, int size) {
     char *p;
     if (fgets(buf, size, stdin)) {
@@ -23,7 +23,7 @@ void read_line(char *buf, int size) {
     }
 }
 
-/* case-insensitive compare */
+
 int str_icmp(const char *a, const char *b) {
     while (*a && *b) {
         char ca = tolower((unsigned char)*a);
@@ -34,7 +34,7 @@ int str_icmp(const char *a, const char *b) {
     return tolower((unsigned char)*a) - tolower((unsigned char)*b);
 }
 
-/* validated integer input */
+
 int read_int_in_range(const char *msg, int low, int high) {
     char buf[100];
     int val;
@@ -68,7 +68,7 @@ int read_int_in_range(const char *msg, int low, int high) {
     }
 }
 
-/* calculate percentage + grade */
+
 void calc(Student *s) {
     float sum = s->m1 + s->m2 + s->m3;
     s->percentage = (sum / 300.0f) * 100.0f;
@@ -81,7 +81,7 @@ void calc(Student *s) {
     else strcpy(s->grade, "F");
 }
 
-/* input student */
+
 void input_student(Student *s) {
     printf("Enter name: ");
     read_line(s->name, NAME_LEN);
@@ -103,7 +103,7 @@ void print_student(Student *s) {
     printf("Grade: %s\n", s->grade);
 }
 
-/* search by roll */
+
 int find_by_roll(Student s[], int n, int roll) {
     int i;
     for (i = 0; i < n; i++) {
@@ -112,7 +112,7 @@ int find_by_roll(Student s[], int n, int roll) {
     return -1;
 }
 
-/* search by name */
+
 int find_by_name(Student s[], int n, const char *name) {
     int i;
     for (i = 0; i < n; i++) {
@@ -121,7 +121,7 @@ int find_by_name(Student s[], int n, const char *name) {
     return -1;
 }
 
-/* list by grade */
+
 void list_by_grade(Student s[], int n, const char *g) {
     int i;
     int found = 0;
@@ -135,7 +135,7 @@ void list_by_grade(Student s[], int n, const char *g) {
     if (!found) printf("No students with grade %s\n", g);
 }
 
-/* class average */
+
 float class_avg(Student s[], int n) {
     int i;
     float sum = 0;
@@ -144,14 +144,14 @@ float class_avg(Student s[], int n) {
     return sum / n;
 }
 
-/* ranking */
+
 int* rank_students(Student s[], int n) {
     int i, j, t;
     int *idx = (int*) malloc(sizeof(int) * n);
 
     for (i = 0; i < n; i++) idx[i] = i;
 
-    /* selection sort by percentage desc */
+    
     for (i = 0; i < n - 1; i++) {
         int best = i;
         for (j = i + 1; j < n; j++) {
@@ -256,4 +256,3 @@ int main() {
 
     return 0;
 }
-
