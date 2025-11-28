@@ -1,1 +1,241 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#define MAX_EMP 200
+
+
+struct Employee {
+    int id;
+    char name[50];
+    char department[20];
+    char designation[20];
+    float salary;
+    char joiningDate[15];        
+    char phone[20];
+    char email[50];
+};
+
+
+struct Employee emp[MAX_EMP];
+int empCount = 0;
+
+
+int getYearsOfExperience(char date[]) {
+    int d, m, y;
+    int currentYear = 2025;
+
+    sscanf(date, "%d-%d-%d", &d, &m, &y);
+    return currentYear - y;
+}
+
+
+void addEmployee() {
+    struct Employee e;
+
+    printf("\nEnter Employee ID: ");
+    scanf("%d", &e.id);
+
+    printf("Enter Name: ");
+    scanf(" %[^\n]", e.name);
+
+    printf("Enter Department (IT/HR/Finance/Marketing/Operations): ");
+    scanf(" %[^\n]", e.department);
+
+    printf("Enter Designation (Intern/Junior/Senior/Manager/Director): ");
+    scanf(" %[^\n]", e.designation);
+
+    printf("Enter Salary: ");
+    scanf("%f", &e.salary);
+
+    printf("Enter Date of Joining (DD-MM-YYYY): ");
+    scanf(" %[^\n]", e.joiningDate);
+
+    printf("Enter Phone Number: ");
+    scanf(" %[^\n]", e.phone);
+
+    printf("Enter Email: ");
+    scanf(" %[^\n]", e.email);
+
+    emp[empCount] = e;
+    empCount++;
+
+    printf("\nEmployee Added Successfully!\n");
+}
+
+
+void displayEmployee(struct Employee e) {
+    printf("\n------------------------------\n");
+    printf("ID: %d\n", e.id);
+    printf("Name: %s\n", e.name);
+    printf("Department: %s\n", e.department);
+    printf("Designation: %s\n", e.designation);
+    printf("Salary: %.2f\n", e.salary);
+    printf("Joining Date: %s\n", e.joiningDate);
+    printf("Phone: %s\n", e.phone);
+    printf("Email: %s\n", e.email);
+    printf("Experience: %d years\n", getYearsOfExperience(e.joiningDate));
+}
+
+
+void displayAll() {
+    int i;
+
+    if (empCount == 0) {
+        printf("No employees found!\n");
+        return;
+    }
+
+    for (i = 0; i < empCount; i++)
+        displayEmployee(emp[i]);
+}
+
+
+void searchByDepartment() {
+    char dept[20];
+    int i;
+
+    printf("\nEnter Department: ");
+    scanf(" %[^\n]", dept);
+
+    for (i = 0; i < empCount; i++) {
+        if (strcmp(emp[i].department, dept) == 0)
+            displayEmployee(emp[i]);
+    }
+}
+
+
+void searchByDesignation() {
+    char des[20];
+    int i;
+
+    printf("\nEnter Designation: ");
+    scanf(" %[^\n]", des);
+
+    for (i = 0; i < empCount; i++) {
+        if (strcmp(emp[i].designation, des) == 0)
+            displayEmployee(emp[i]);
+    }
+}
+
+
+void searchByExperience() {
+    int exp, years, i;
+
+    printf("\nEnter Minimum Years of Experience: ");
+    scanf("%d", &exp);
+
+    for (i = 0; i < empCount; i++) {
+        years = getYearsOfExperience(emp[i].joiningDate);
+        if (years >= exp)
+            displayEmployee(emp[i]);
+    }
+}
+
+
+void departmentSalaryStats() {
+    char dept[20];
+    int i, count = 0;
+    float total = 0;
+
+    printf("\nEnter Department: ");
+    scanf(" %[^\n]", dept);
+
+    for (i = 0; i < empCount; i++) {
+        if (strcmp(emp[i].department, dept) == 0) {
+            total += emp[i].salary;
+            count++;
+        }
+    }
+
+    if (count == 0) {
+        printf("No employees in this department.\n");
+        return;
+    }
+
+    printf("\nTotal Salary: %.2f\n", total);
+    printf("Average Salary: %.2f\n", total / count);
+}
+
+
+void applyAppraisal() {
+    int id, i;
+    float percent;
+
+    printf("\nEnter Employee ID: ");
+    scanf("%d", &id);
+
+    for (i = 0; i < empCount; i++) {
+        if (emp[i].id == id) {
+
+            printf("Enter Performance Rating (5% - 15%): ");
+            scanf("%f", &percent);
+
+            if (percent < 5 || percent > 15) {
+                printf("Invalid percentage!\n");
+                return;
+            }
+
+            emp[i].salary += (emp[i].salary * percent / 100);
+
+            printf("New Salary Updated Successfully!\n");
+            return;
+        }
+    }
+
+    printf("Employee not found!\n");
+}
+
+
+void checkPromotionEligibility() {
+    int i, years;
+
+    printf("\nEmployees Eligible for Promotion (>3 years):\n");
+
+    for (i = 0; i < empCount; i++) {
+        years = getYearsOfExperience(emp[i].joiningDate);
+
+        if (years > 3)
+            displayEmployee(emp[i]);
+    }
+}
+
+
+int main() {
+    int choice;
+
+    while (1) {
+        printf("\n=================================\n");
+        printf("      EMPLOYEE RECORD SYSTEM     \n");
+        printf("=================================\n");
+        printf("1. Add Employee\n");
+        printf("2. Display All Employees\n");
+        printf("3. Search by Department\n");
+        printf("4. Search by Designation\n");
+        printf("5. Search by Experience\n");
+        printf("6. Department Salary Statistics\n");
+        printf("7. Apply Annual Appraisal\n");
+        printf("8. Promotion Eligibility\n");
+        printf("9. Exit\n");
+        printf("Enter Choice: ");
+        scanf("%d", &choice);
+
+        if (choice == 1) addEmployee();
+        else if (choice == 2) displayAll();
+        else if (choice == 3) searchByDepartment();
+        else if (choice == 4) searchByDesignation();
+        else if (choice == 5) searchByExperience();
+        else if (choice == 6) departmentSalaryStats();
+        else if (choice == 7) applyAppraisal();
+        else if (choice == 8) checkPromotionEligibility();
+        else if (choice == 9) {
+            printf("Exiting...\n");
+            break;
+        }
+        else
+            printf("Invalid Choice!\n");
+    }
+
+    return 0;
+}
 
