@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+struct Student {
+char name[51];  
+int marks;
+};
+
+int main() {
+int n;
+printf("Enter the number of students: ");
+scanf("%d", &n);
+getchar();
+
+
+
+struct Student *students = (struct Student *)malloc(n * sizeof(struct Student));
+if (students == NULL) {
+    printf("Memory allocation failed.\n");
+    return 1;
+}
+
+
+for (int i = 0; i < n; i++) {
+    printf("Enter name of student %d: ", i + 1);
+    fgets(students[i].name, 51, stdin);
+    size_t len = strlen(students[i].name);
+    if (len > 0 && students[i].name[len - 1] == '\n') {
+        students[i].name[len - 1] = '\0'; 
+    }
+
+    printf("Enter marks of student %d: ", i + 1);
+    scanf("%d", &students[i].marks);
+    getchar(); 
+}
+
+// Display students with marks > 75
+printf("\nStudents with marks greater than 75:\n");
+for (int i = 0; i < n; i++) {
+    if (students[i].marks > 75) {
+        printf("%s %d\n", students[i].name, students[i].marks);
+    }
+}
+
+// Free allocated memory
+free(students);
+
+return 0;
+
+
+}
