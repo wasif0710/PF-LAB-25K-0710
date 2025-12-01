@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+
+int isPalindrome(char str[], int left, int right) {
+if (left >= right) {
+return 1; 
+}
+
+
+
+char leftChar = tolower(str[left]);
+char rightChar = tolower(str[right]);
+
+if (leftChar != rightChar) {
+    return 0; 
+}
+
+return isPalindrome(str, left + 1, right - 1); 
+
+}
+
+int main() {
+char str[101]; 
+printf("Enter a string: ");
+fgets(str, 101, stdin);
+
+
+size_t len = strlen(str);
+if (len > 0 && str[len - 1] == '\n') {
+    str[len - 1] = '\0';
+    len--;
+}
+
+if (isPalindrome(str, 0, len - 1)) {
+    printf("The string is a palindrome.\n");
+} else {
+    printf("The string is not a palindrome.\n");
+}
+
+return 0;
+
+
+}
